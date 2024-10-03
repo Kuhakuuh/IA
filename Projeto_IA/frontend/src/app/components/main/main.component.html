@@ -1,0 +1,145 @@
+<div class="grid">
+    <div class="cell">
+        <section class="section">
+            <div class="container">
+                <h1 class="title">Your Predictions</h1>
+
+                <div *ngIf="houses.length > 0; else noHouses">
+                    <div *ngFor="let house of houses let i = index">
+                        <div class="card">
+                            <header class="card-header">
+                                <p class="card-header-title">House {{i+1 }} </p>
+                                <p>Predicted Price: <strong>{{house.Price_Predicted| number : '1.0-2'}}</strong>€</p>
+                                <button class="card-header-icon" aria-label="more options" (click)="expandCard(i)">
+                                    <span class="icon">
+                                        <i class="fas"
+                                            [ngClass]="{'fa-angle-down': !isContentVisible, 'fa-angle-up': isContentVisible}"
+                                            aria-hidden="true"></i>
+                                    </span>
+                                </button>
+                                <button class="card-header-icon" aria-label="more options" (click)="delete(house.id)">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-xmark"></i>
+                                    </span>
+                                </button>
+                            </header>
+                            <div class="card-content" *ngIf="expandedIndex === i">
+                                <div class="content">
+                                    <p> <strong>Nº Bedrooms: </strong> {{ house.Bedrooms }}</p>
+                                    <p> <strong>Nº Bathrooms: </strong> {{ house.bathrooms }}
+                                    <p><strong>Living area: </strong>{{ house.Living_m2 }} m²</p>
+                                    <p><strong>Lot:</strong> {{ house.Lot_m2 }} m²</p>
+                                    <p><strong>Grade: </strong> {{ house.Grade }}</p>
+                                    <p><strong>Latitude: </strong> {{ house.Lat }}</p>
+                                    <p><strong>Longitude: </strong> {{ house.Long }}</p>
+                                    <p><strong>Predicted Price: </strong>{{ house.Price_Predicted | number : '1.0-2'}}€</p>
+                                    <p><strong>selectedModel: </strong> {{ house.Selected_model }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #noHouses>
+                    <p>No houses found.</p>
+                </ng-template>
+
+
+
+            </div>
+        </section>
+    </div>
+    <div class="cell">
+        <section class="section">
+            <div class="container">
+
+                <form (ngSubmit)="createHouse()">
+                    <div class="field">
+                        <label class="label">Bedrooms</label>
+                        <div class="control">
+                            <input class="input" type="text" [(ngModel)]="house.Bedrooms" name="Bedrooms" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Bathrooms</label>
+                        <div class="control">
+                            <input class="input" type="text" [(ngModel)]="house.bathrooms" name="bathrooms" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Grade</label>
+                        <div class="control">
+                            <input class="input" type="text" [(ngModel)]="house.Grade" name="Grade" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Latitude</label>
+                        <div class="control">
+                            <input class="input" type="text" [(ngModel)]="house.Lat" name="Lat" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Longitude</label>
+                        <div class="control">
+                            <input class="input" type="text" [(ngModel)]="house.Long" name="Long" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Living Area (m²)</label>
+                        <div class="control">
+                            <input class="input" type="text" [(ngModel)]="house.Living_m2" name="Living_m2" required>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Lot Size (m²)</label>
+                        <div class="control">
+                            <input class="input" type="text" [(ngModel)]="house.Lot_m2" name="Lot_m2" required>
+                        </div>
+                    </div>
+
+
+                    
+                    <div class="field has-text-centered" >
+                        <div class="control">
+                            <button class="button is-primary has.text-centered" type="submit">Predict</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+
+    </div>
+    <div class="cell">
+        <section class="section">
+            <div class="container">
+                <h1 class="title">Available Models </h1>
+                <div *ngIf="models.length > 0;">
+                <div *ngFor="let model of models let i = index">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="content">
+                            <p>
+                                <label class="radio">
+                                <input type="radio" name="options" [value]="model.name" [(ngModel)]="selectedModel" (ngModelChange)="updateValue(model.name)">
+                                </label>
+                                {{model.name}}  
+                            </p> 
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div *ngIf="selectedModel != undefined">
+                    <h1 class="title is-4">Selected model: </h1>
+                    <h2 class="subtitle is-4">{{selectedModel}}</h2>
+                </div>    
+                
+            
+            </div>
+            </div>
+        </section>
+    </div>
+</div>

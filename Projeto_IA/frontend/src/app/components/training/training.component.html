@@ -1,0 +1,124 @@
+<div class="tabs is-centered is-toggle">
+  <ul>
+    <li [class.is-active]="activeTab === 1">
+      <a (click)="setActiveTab(1)">Default</a>
+    </li>
+    <li [class.is-active]="activeTab === 2">
+      <a (click)="setActiveTab(2)">Tuning</a>
+    </li>
+  </ul>
+</div>
+<div>
+  <div *ngIf="activeTab === 1">
+    <div class="grid">
+      <div class="cell">
+        <section class="section">
+          <h1 class="title">Random Forest Regressor</h1>
+          <p class="subtitle is-4">Default</p>
+          <figure class="image">
+            <img src="assets\plot_randomForest\plot_importance_default.png" />
+          </figure>
+
+          <figure class="image">
+            <img src="assets\plot_randomForest\plot_parity_default.png" />
+          </figure>
+
+          <figure class="image">
+            <img src="assets\plot_randomForest\plot_residual_default.png" />
+          </figure>
+        </section>
+      </div>
+      <div class="cell">
+        <section class="section">
+          <h1 class="title">Decision Tree Regressor</h1>
+          <p class="subtitle is-4">Default</p>
+          <figure class="image">
+            <img src="assets\plot_decisionTree\plot_importance_default.png" />
+          </figure>
+
+          <figure class="image">
+            <img src="assets\plot_decisionTree\plot_parity_default.png" />
+          </figure>
+
+          <figure class="image">
+            <img src="assets\plot_decisionTree\plot_residual_default.png" />
+          </figure>
+        </section>
+      </div>
+      <div class="cell">
+        <section class="section">
+          <h1 class="title">Gradient Boosting Regressor</h1>
+          <p class="subtitle is-4">Default</p>
+          <figure class="image">
+            <img src="assets\plot_decisionTree\plot_importance_default.png" />
+          </figure>
+
+          <figure class="image">
+            <img src="assets\plot_gradientBoosting\plot_parity_default.png" />
+          </figure>
+
+          <figure class="image">
+            <img src="assets\plot_gradientBoosting\plot_residual_default.png" />
+          </figure>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="activeTab === 2">
+    <div class="grid">
+      <div class="cell">
+        <section class="section">
+          <h1 class="title">Random Forest Regressor</h1>
+          <p class="subtitle is-4">Tuning</p>
+          <figure class="image">
+            <img src="assets\plot_randomForest\plot_importance_tuning.png" />
+          </figure>
+
+          <figure class="image">
+            <img src="assets\plot_randomForest\plot_parity_tuning.png" />
+          </figure>
+
+          <figure class="image">
+            <img src="assets\plot_randomForest\plot_residual_tuning.png" />
+          </figure>
+        </section>
+      </div>
+      <div class="cell">
+        <section class="section">
+          <h1 class="title">Decision Tree Regressor</h1>
+          <p class="subtitle is-4">Tuning</p>
+          <figure class="image">
+            <img src="assets\plot_decisionTree\plot_importance_tuning.png" />
+          </figure>
+
+          <figure class="image">
+            <img src="assets\plot_decisionTree\plot_parity_tuning.png" />
+          </figure>
+
+          <figure class="image">
+            <img src="assets\plot_decisionTree\plot_residual_tuning.png" />
+          </figure>
+        </section>
+      </div>
+      <div class="cell">
+        <section class="section">
+          <h1 class="title">Gradient Boosting Regressor</h1>
+          <p class="subtitle is-4">Tuning</p>
+          <figure class="image">
+            <img src="assets\plot_decisionTree\plot_importance_tuning.png" />
+          </figure>
+
+          <figure class="image">
+            <img src="assets\plot_gradientBoosting\plot_parity_tuning.png" />
+          </figure>
+
+          <figure class="image">
+            <img src="assets\plot_gradientBoosting\plot_residual_tuning.png" />
+          </figure>
+        </section>
+      </div>
+    </div>
+
+
+  </div>
+</div>
