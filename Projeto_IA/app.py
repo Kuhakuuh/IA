@@ -31,7 +31,7 @@ app.add_middleware(
 )
 
 
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://EN_IA:sZMHrjGr2nX7XglQ@cluster0.qd9iypu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+client = motor.motor_asyncio.AsyncIOMotorClient("yoururl")
 db = client.houses
 prediction_collection = db.get_collection("predictions")
 
